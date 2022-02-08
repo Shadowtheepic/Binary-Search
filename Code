@@ -1,0 +1,59 @@
+import pygame
+import random
+
+pygame.init()
+pygame.display.set_caption("bruh") 
+screen = pygame.display.set_mode((500, 500))
+clock = pygame.time.Clock()
+
+
+balls = list()
+    
+for i in range(100):
+    balls.append(random.randrange (1,50))
+print(balls)
+     
+    
+def linearcheck(i, l):
+    print(i)
+    if (i == 460):
+        print ("found the number, it's on slot", l)
+        return True
+    else:
+        print ("haven't found da numba yet")
+        return False
+
+doExit = False
+
+balls[10] = 460
+
+print (balls[10])
+i = 0
+
+while not doExit:
+    clock.tick(60)
+
+    events = pygame.event.get()
+
+    for event in events:
+      if event.type == pygame.quit:
+        doExit = True
+    if(linearcheck(balls[i],i)) == True:
+        break
+    else:
+        linearcheck(balls[i], i)
+        i += 1
+   
+       
+            
+    
+
+    screen.fill((5, 5, 100))
+
+
+    pygame.display.flip() 
+
+
+pygame.quit()
+
+
